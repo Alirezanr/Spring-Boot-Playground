@@ -6,6 +6,7 @@ import dan.nr.first_project.database.repository.NoteRepository
 import org.bson.types.ObjectId
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
@@ -34,7 +35,9 @@ class NoteController(
     )
 
     @PostMapping
-    fun save(body: NoteRequest): NoteResponse {
+    fun save(
+        @RequestBody body: NoteRequest
+    ): NoteResponse {
         val note = repository.save(
             Note(
                 id = body.id?.let { ObjectId(it) } ?: ObjectId.get(),
