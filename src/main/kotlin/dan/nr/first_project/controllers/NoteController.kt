@@ -23,7 +23,7 @@ class NoteController(
         val title: String,
         val content: String,
         val color: Long,
-        val ownerId: String,
+        //val ownerId: String,
     )
 
     data class NoteResponse(
@@ -45,7 +45,7 @@ class NoteController(
                 content = body.content,
                 color = body.color,
                 createdAt = Instant.now(),
-                ownerId = ObjectId(body.ownerId)
+                ownerId = ObjectId(/*body.ownerId*/)
             )
         )
 
